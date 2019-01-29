@@ -8,8 +8,9 @@ files_in_dest = os.listdir(path2dest)
 
 def main():
     '''
-       renames files in one folder with names of
-       the files in another folder if they have same IDs
+       renames files in one folder with
+       the names of files from another folder if they have same IDs,
+       with modification of the name
     '''
     for name in files_in_source:
         name_id = name.partition(".")[0]
