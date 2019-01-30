@@ -28,7 +28,7 @@ def main():
     '''
     for name in files_in_source:
         # initiating iteration over files in source folder
-        # picking id every file
+        # picking id from every file
         fractals_of_name = name.split(".")
         name_id = fractals_of_name[0]
 
@@ -44,7 +44,7 @@ def main():
                 old_file = os.path.join(path2source, name)
                 print(old_file, "   --->   ", new_file)
                 os.rename(old_file, new_file)
-                continue
+                break
     print("Process is over")
 
 main()
