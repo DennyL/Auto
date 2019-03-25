@@ -1,3 +1,7 @@
+######################
+#      RENAMER       #
+# by Denys Lozinskyi #
+######################
 import os
 
 """
@@ -10,7 +14,6 @@ import os
     marking the one that contains a translation:
     So that "21. Иван Иванов.docx" became "21. Ivan Ivanov (translation).docx",
     keeping an original extension of the file.
-
     NOTE! For correct output of the script the files MUST have same IDs separated from the rest of a name by a dot.
 """
 
@@ -40,9 +43,16 @@ def main():
                 extension = fractals_of_name[-1]
                 # and building its new name based on a name from dest folder
                 # leaving aside its extension (because we need to preserve the original one)
-                new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0] + " (translation)." + extension)
+
+                '''OPTIONS / ADJUSTMENTS'''
+                ###new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0] + " (translation)." + extension)
+                ###new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0] + " (original)." + extension)
+                '''this one we use, if a name to rename with already containes "(original/translation)" part'''
+                new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0].split("(")[0] + "(original)." + extension)
+                
                 old_file = os.path.join(path2source, name)
-                os.rename(old_file, new_file)
+                '''ENABLING RENAMING'''
+                ####os.rename(old_file, new_file)
                 print(old_file, "   --->   ", new_file)
                 break
         else:
@@ -50,4 +60,6 @@ def main():
             print("\nCannot find a pair for: " + name + "\n")
     print("Process is over")
 
-main()
+
+if __name__ == '__main__':
+    main()
