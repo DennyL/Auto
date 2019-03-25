@@ -1,18 +1,9 @@
-#############################
-# Arabs to Romans Converter #
-#    by Denys Lozinskyi     #
-#############################
+##############################
+# Arabs <-> Romans Converter #
+#     by Denys Lozinskyi     #
+##############################
 
-
-def arabs2romans(number):
-    '''
-        converts arab numbers into the latins
-    '''
-    
-    if not 0 < number < 4000:
-        return "!Число должно быть в диапазоне от 0 до 3999!"
-    
-    tab = [
+tab = [
     [1000, 'M'],
     [900, 'CM'],
     [500, 'D'],
@@ -27,6 +18,15 @@ def arabs2romans(number):
     [4, 'IV'],
     [1, 'I']
     ]
+
+def arabs2romans(number):
+    '''
+        converts arabic numbers into the romans
+    '''
+    
+    if not 0 < number < 4000:
+        return "!Число должно быть в диапазоне от 0 до 3999!"
+    
     
     result = ''
     for arab, roman in tab:
@@ -35,6 +35,28 @@ def arabs2romans(number):
             number -= arab
     return result
 
+
+# def romans2arabs(string="XX"):
+#     '''
+#         converts roman numbers back to the arabics
+#     '''
+#     result = 0
+#     initial_point = 0
+#     while initial_point < len(string):
+#         for arab, roman in tab:
+#             if string[initial_point:initial_point+2] == roman:
+#                 result += arab
+#                 initial_point +=2
+#                 break 
+#             elif string[initial_point] == roman:
+#                 result += arab
+#                 initial_point += 1
+#                 break
+#         else:
+#             return "Введенное число содержит ошибки"
+#     return result
+
+        
 
 def main_script():
     
@@ -51,6 +73,7 @@ def main_script():
             print("!Неверный ввод!")
             continue
         print("\n%s -> %s" %(arab, arabs2romans(int(arab))))
+
 
 if __name__ == '__main__':
     main_script()
