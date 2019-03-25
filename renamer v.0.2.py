@@ -2,6 +2,7 @@
 #      RENAMER       #
 # by Denys Lozinskyi #
 ######################
+
 import os
 
 """
@@ -48,10 +49,11 @@ def main():
                 ###new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0] + " (translation)." + extension)
                 ###new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0] + " (original)." + extension)
                 '''this one we use, if a name to rename with already containes "(original/translation)" part'''
-                new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0].split("(")[0] + "(original)." + extension)
+                ###new_file = os.path.join(path2source, files_in_dest[i].rpartition(".")[0].split("(")[0] + "(original)." + extension)
                 
                 old_file = os.path.join(path2source, name)
-                '''ENABLING RENAMING'''
+
+                '''ENABLING RENAMING PROCESS'''
                 ####os.rename(old_file, new_file)
                 print(old_file, "   --->   ", new_file)
                 break
